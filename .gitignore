@@ -1,16 +1,35 @@
 # Build artifacts
-build/
+/build/
 out/
-*.exe
-*.obj
-*.pdb
+cmake-build-*/
 
-# VS Code settings
-.vscode/
-
-# CMake files
-CMakeFiles/
+# CMake
 CMakeCache.txt
-cmake_install.cmake
-Makefile
+CMakeFiles/
+CTestTestfile.cmake
 Testing/
+*.cmake.user
+
+# Visual Studio / MSVC
+.vs/
+*.vcxproj*
+*.sln
+*.user
+*.pdb
+*.ilk
+*.obj
+*.tlog
+*.idb
+*.exe
+*.dll
+*.lib
+*.exp
+
+# vcpkg
+vcpkg_installed/
+packages/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
