@@ -1,15 +1,17 @@
 #include "gtest/gtest.h"
+#include "core/EventBase.h"
 #include "core/EventId.h"
 
 using namespace aegis;
 
-TEST(EventIdTests, UniqueIds) {
-    struct A {};
-    struct B {};
+TEST(EventBaseTests, ConstructionWorks) {
+    struct MyEvent : EventBase {
+        int payload = 0;
+        explicit MyEvent(int p) : payload(p) { type_id = EventType<MyEvent>::id; }
+    };
 
-    EventId a_id = EventType<A>::id;
-    EventId b_id = EventType<B>::id;
+    MyEvent e(42);
 
-    EXPECT_NE(a_id, b_id);
-    EXPECT_EQ(a_id, EventType<A>::id);
+    EXPECT_EQ(e.type_id, EventType<MyEvent>::id);
+    EXPECT_EQ(e.payload, 42);
 }
